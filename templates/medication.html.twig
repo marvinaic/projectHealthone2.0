@@ -1,0 +1,12 @@
+{% extends 'home.html.twig' %}
+{% block body %}
+<h4 class="title">medicijnen</h4>
+
+<ul>
+    {% for medicine in medication %}
+        <div class="medicine">
+        {{ medicine }}
+        </div>
+    {% endfor %}
+</ul>
+{% endblock %}

@@ -1,0 +1,27 @@
+body
+{
+    background-color: coral;
+}
+.title
+{
+    display: block;
+    margin-left: 45%;
+    margin-right: 45%;
+}
+#medications
+{
+    margin: 10px;
+    border: dotted black 1px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    justify-content: center;
+}
+.medicine
+{
+    width:90%;
+    background-color:aquamarine;
+    color: black;
+    font-size:24px;
+    padding:10px;
+    border-radius:10px;
+}
