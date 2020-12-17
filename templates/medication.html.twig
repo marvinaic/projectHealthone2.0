@@ -2,11 +2,14 @@
 {% block body %}
 <h3 class="title">medicijnen</h3>
 
-<ul>
-    {% for medicine in medication %}
+<div id="medications">
+    {% for drug in drugs %}
         <div class="medicine">
-        {{ medicine }}
+            naam: {{ drug.naam }}<br/><br/>
+            werking: {{ drug.werking }}<br/><br/>
+            bijwerkingen: {{ drug.bijwerkingen }}<br/><br/>
+            verzekerd: {{ drug.verzekerd }}<br/>
         </div>
     {% endfor %}
-</ul>
+</div>
 {% endblock %}

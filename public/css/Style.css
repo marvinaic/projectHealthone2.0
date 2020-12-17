@@ -1,6 +1,34 @@
 body
 {
-    background-color: coral;
+    background-color: antiquewhite;
+}
+#patienten
+{
+    margin: 10px;
+    border: dotted black 1px;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+
+    justify-content: center;
+}
+.patient
+{
+    width:90%;
+    height: 90%;
+    background-color:aquamarine;
+    color: black;
+    font-size:24px;
+    padding:10px;
+    border-radius:10px;
+}
+#loginForm
+{
+    margin-left: 40%;
+    margin-right: 45%;
+}
+#logout
+{
+    float: right;
 }
 .title
 {
@@ -18,10 +46,10 @@ body
 }
 .medicine
 {
-    width:90%;
     background-color:aquamarine;
     color: black;
     font-size:24px;
     padding:10px;
-    border-radius:10px;
+    margin: 10px;
+    border-radius:15px;
 }
