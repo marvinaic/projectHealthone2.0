@@ -1,0 +1,9 @@
+{% extends 'home.html.twig' %}
+{% block section4 %}
+    <h3 class="title">voeg een recept toe</h3>
+    {#  {{ form(receptForm) }} #}
+    {{ form_start(receptForm) }}
+        {{ form_widget(receptForm) }}
+        <button type="submit" class="">submit</button>
+    {{ form_end(receptForm) }}
+{%endblock  %}

@@ -1,15 +1,17 @@
 {% extends 'home.html.twig' %}
-{% block body %}
+{% block section1 %}
 <h3 class="title">medicijnen</h3>
-
-<div id="medications">
+    <a class="button" href="{{ path('drugform') }}">voeg medicijn toe</a>
+    <div id="medications">
     {% for drug in drugs %}
         <div class="medicine">
             naam: {{ drug.naam }}<br/><br/>
             werking: {{ drug.werking }}<br/><br/>
             bijwerkingen: {{ drug.bijwerkingen }}<br/><br/>
-            verzekerd: {{ drug.verzekerd }}<br/>
+            verzekerd: {{ drug.verzekerd }}<br/><br/>
+            {#  <a class="button" href="{{ path('drugDelete') }}">verwijder medicijn</a>
+            <a class="button" href="{{ path('drugModifi') }}">pas medicijn aan</a> #}
         </div>
     {% endfor %}
-</div>
+    </div>
 {% endblock %}

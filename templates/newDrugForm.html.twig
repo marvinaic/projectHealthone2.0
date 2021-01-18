@@ -1,0 +1,9 @@
+{% extends 'home.html.twig' %}
+{% block section2 %}
+    <h3 class="title">voeg medicijn toe</h3>
+    {#  {{ form(drugForm) }} #}
+    {{ form_start(drugForm) }}
+        {{ form_widget(drugForm) }}
+        <button type="submit" class="">submit</button>
+    {{ form_end(drugForm) }}
+{%endblock  %}

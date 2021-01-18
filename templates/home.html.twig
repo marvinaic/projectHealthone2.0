@@ -7,7 +7,12 @@
     </head>
     <body>
         <h1 class="title">healthone</h1>
-        {% block body %}home{% endblock %}
+        {% block body %}
+            {% block section1 %}{%endblock  %}<br>
+            {% block section2 %}{%endblock  %}<br>
+            {% block section3 %}{%endblock  %}
+            {% block section4 %}{%endblock  %}
+        {% endblock %}
         {% block javascripts %}{% endblock %}
     </body>
 </html>
