@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Recept;
 use App\Form\MedicijnFormType;
+use App\Form\ReceptFormType;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Psr\Container\ContainerInterface;
@@ -16,6 +17,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class HomepageController extends AbstractController
 {
+
     /**
      * @\Symfony\Component\Routing\Annotation\Route("/", name="home")
      */
@@ -33,7 +35,7 @@ class HomepageController extends AbstractController
 
         $drug_2 = new Drug();
         $drug_2->setNaam("amoxicilline");
-        $drug_2->setWerking("breedspectrum antibioticum, actief tegen 
+        $drug_2->setWerking("breedspectrum antibioticum, actief tegen
         grampositieve en gramnegatieve bacteriën");
         $drug_2->setBijwerkingen("braken, buikpijn, diarree, spijsverteringsstoornissen, huidirritaties,
          maagdarm-stoornissen");
@@ -60,7 +62,7 @@ class HomepageController extends AbstractController
         $recepten = $dbRecepten->findAll();
 
         return $this->render("medication.html.twig" , [
-            'drugs' => $drugs,
+            'drugs' => $drugs, 'recepten' => $recepten,
         ]);
 
     }
@@ -88,24 +90,10 @@ class HomepageController extends AbstractController
         ]);
 
     }
-
-    /**
-     *  @\Symfony\Component\Routing\Annotation\Route("/", name="home")
-     */
-    function showRecept(EntityManagerInterface $em)
-    {
-        $dbRecepten = $em->getRepository(Recept::class);
-        $recepten = $dbRecepten->findAll();
-
-        return $this->render("recepten.html.twig" , [
-            'recepten' => $recepten,
-        ]);
-    }
-
     /**
      * @Route("/newRecept", name="receptform")
      */
-    function addRecept(EntityManagerInterface $em)
+    function addRecept(EntityManagerInterface $em, Request $request)
     {
         /*
         $recept_1 = new Recept();
@@ -118,8 +106,28 @@ class HomepageController extends AbstractController
         $em->flush();
         */
         //$drug = $em->getRepository(Drug::class)->find(121);
-        return $this->render("newReceptForm.html.twig");
+
+        $receptForm = $this->createForm(ReceptFormType::class);
+
+        $receptForm->handleRequest($request);
+        if ($receptForm->isSubmitted() && $receptForm->isValid())
+        {
+            $recept = $receptForm->getData();
+
+            $em->persist($recept);
+
+            $em->flush();
+
+            return $this->redirectToRoute('home');
+        }
+
+        return $this->render("newReceptForm.html.twig",[
+                'receptForm' => $receptForm->createView(),
+            ]
+
+        );
     }
+
 
 
 }

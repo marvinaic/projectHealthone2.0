@@ -6,12 +6,15 @@
         <link rel="stylesheet" href="/css/Style.css">
     </head>
     <body>
-        <h1 class="title">healthone</h1>
+        <nav>
+            <h1 class="title">healthone</h1>
+            <a class="button login" href="{{ path('app_login') }}">login</a>
+            <a class="button logout" href="{{ path('app_logout') }}">logout</a>
+        </nav>
         {% block body %}
             {% block section1 %}{%endblock  %}<br>
             {% block section2 %}{%endblock  %}<br>
             {% block section3 %}{%endblock  %}
-            {% block section4 %}{%endblock  %}
         {% endblock %}
         {% block javascripts %}{% endblock %}
     </body>
